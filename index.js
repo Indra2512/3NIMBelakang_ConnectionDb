@@ -21,3 +21,11 @@ const pool = new Pool({
     port: 5432, // port postgres SQL
 })
 
+app.get('/', (req, res, next) => {
+    console.log("TEST DATA : ");
+    pool.query('SELECT * from biodata')
+    .then(testData => {
+        console.log(testData)
+        res.send(testData.rows);
+    })
+   
